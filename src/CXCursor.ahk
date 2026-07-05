@@ -42,6 +42,13 @@ export default struct CXCursor {
     DisplayName => DllCall("libclang\clang_getCursorDisplayName", CXCursor, this, CXString).ToString()
 
     /**
+     * The Unified Symbol Resolution (USR) for this cursor: a string that uniquely and stably identifies the entity
+     * across translation units. Unlike `Spelling`, it is non-empty for anonymous records and distinguishes entities
+     * that happen to share a name.
+     */
+    USR => DllCall("libclang\clang_getCursorUSR", CXCursor, this, CXString).ToString()
+
+    /**
      * The type of this cursor (if any).
      */
     Type => DllCall("libclang\clang_getCursorType", CXCursor, this, CXType)
